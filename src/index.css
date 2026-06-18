@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-canvas text-ink font-sans;
+  }
+  ::selection {
+    background: #7a2e2e;
+    color: #fbf9f4;
+  }
+}
+
+@layer components {
+  /* Small-caps eyebrow label, the museum "wall label" tone. */
+  .eyebrow {
+    @apply text-[11px] uppercase tracking-eyebrow text-muted font-medium;
+  }
+  .hairline {
+    @apply border-0 border-t border-line;
+  }
+  /* Outlined, restrained museum button. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-medium
+           transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-ink {
+    @apply btn bg-ink text-paper hover:bg-accent;
+  }
+  .btn-outline {
+    @apply btn border border-ink text-ink hover:bg-ink hover:text-paper;
+  }
+  .btn-ghost {
+    @apply btn text-muted hover:text-ink;
+  }
+  .field-label {
+    @apply block eyebrow mb-2;
+  }
+  .field {
+    @apply w-full bg-paper border border-line px-3.5 py-2.5 text-sm text-ink
+           placeholder:text-muted/60 focus:outline-none focus:border-ink transition-colors;
+  }
+  .card {
+    @apply bg-paper border border-line;
+  }
+}
