@@ -38,7 +38,7 @@ const SANS = "'Helvetica Neue', Helvetica, Arial, sans-serif"
  *   Vercel, remplace par l'URL complète, ex. :
  *     export const LOGO_MVR = 'https://ton-app.vercel.app/logo-mvr.png'
  */
-export const LOGO_MVR = '/logo-mvr.png'
+export const LOGO_MVR = 'https://newsletter-ynov.vercel.app/logo-mvr.png'
 
 type Accent = 'mauve' | 'sage'
 const accentColor = (a: Accent = 'mauve') => (a === 'sage' ? C.sage : C.mauve)
