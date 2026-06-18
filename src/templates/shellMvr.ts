@@ -28,6 +28,18 @@ const C = {
 const SERIF = "Georgia, 'Times New Roman', Times, serif"
 const SANS = "'Helvetica Neue', Helvetica, Arial, sans-serif"
 
+/**
+ * URL du logo affiché dans l'en-tête des emails.
+ *
+ * - En préversion locale (vite-node) et avec `vercel dev`, ce chemin relatif
+ *   suffit : le fichier est servi depuis `public/logo-mvr.png`.
+ * - Pour de VRAIS envois, les clients mail ne savent pas charger « localhost » :
+ *   l'image doit être une URL ABSOLUE publique. Une fois le site déployé sur
+ *   Vercel, remplace par l'URL complète, ex. :
+ *     export const LOGO_MVR = 'https://ton-app.vercel.app/logo-mvr.png'
+ */
+export const LOGO_MVR = '/logo-mvr.png'
+
 type Accent = 'mauve' | 'sage'
 const accentColor = (a: Accent = 'mauve') => (a === 'sage' ? C.sage : C.mauve)
 
@@ -163,6 +175,8 @@ interface ShellOpts {
   monogram?: string
   /** URL d'un logo image hébergé : remplace le monogramme typographique. */
   logoUrl?: string
+  /** Couleur de fond d'une « plaque » derrière le logo (utile pour un logo clair/blanc). */
+  logoBg?: string
   /** Couleur d'accent (liseré haut de carte). */
   accent?: Accent
   /** Adresse postale (pied de page). '' pour masquer. */
@@ -182,12 +196,25 @@ export function emailShellMvr(body: string, opts: ShellOpts = {}): string {
   const socials = opts.socials ?? 'Facebook&nbsp;·&nbsp;Instagram&nbsp;·&nbsp;X'
   const preferences = opts.preferences ?? 'Mettre à jour mes préférences'
 
-  const masthead = opts.logoUrl
-    ? `<img src="${esc(opts.logoUrl)}" width="170" alt="${esc(brand)}" style="display:block;margin:0 auto;border:0;max-width:170px;height:auto;" />`
-    : monogram
-      ? `<div style="font-family:${SERIF};font-size:30px;letter-spacing:8px;color:${C.ink};line-height:1;">${esc(monogram)}</div>
-         <div style="margin-top:9px;font-family:${SANS};font-size:10px;letter-spacing:4px;text-transform:uppercase;color:${C.muted};">${esc(brand)}</div>`
-      : `<div style="font-family:${SERIF};font-size:22px;letter-spacing:2px;color:${C.ink};">${esc(brand)}</div>`
+  let mark: string
+  let showWordmark = true
+  if (opts.logoUrl) {
+    const w = opts.logoBg ? 130 : 160
+    const img = `<img src="${esc(opts.logoUrl)}" width="${w}" alt="${esc(brand)}" style="display:block;margin:0 auto;border:0;width:${w}px;max-width:${w}px;height:auto;" />`
+    mark = opts.logoBg
+      ? `<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:0 auto;"><tr><td style="background:${opts.logoBg};padding:18px 22px;border-radius:10px;">${img}</td></tr></table>`
+      : img
+  } else if (monogram) {
+    mark = `<div style="font-family:${SERIF};font-size:30px;letter-spacing:8px;color:${C.ink};line-height:1;">${esc(monogram)}</div>`
+  } else {
+    mark = `<div style="font-family:${SERIF};font-size:22px;letter-spacing:2px;color:${C.ink};">${esc(brand)}</div>`
+    showWordmark = false
+  }
+  const wordmark =
+    showWordmark && brand
+      ? `<div style="margin-top:11px;font-family:${SANS};font-size:10px;letter-spacing:4px;text-transform:uppercase;color:${C.muted};">${esc(brand)}</div>`
+      : ''
+  const masthead = mark + wordmark
 
   const footer = [
     `<div style="font-family:${SERIF};font-size:13px;color:${C.ink};">${esc(brand)}</div>`,

@@ -13,6 +13,7 @@ import {
   rule,
   spacer,
   signature,
+  LOGO_MVR,
 } from './shellMvr'
 
 /**
@@ -80,12 +81,10 @@ export const immersion: EmailTemplate = {
       ].join('\n'),
       {
         preheader: `Réserve avant le 30 juin · -15% avec le code ${v.promoCode}`,
-        brand: 'Immersion Experience',
-        monogram: 'IE',
+        brand: 'Musée de la Vie Romantique',
         accent: 'sage',
-        address: '',
-        socials: '',
-        preferences: 'Gérer mes préférences',
+        logoUrl: LOGO_MVR,
+        logoBg: '#2E2F29',
       },
     ),
 }

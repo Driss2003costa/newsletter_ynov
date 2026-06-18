@@ -12,6 +12,7 @@ import {
   ornament,
   spacer,
   signature,
+  LOGO_MVR,
 } from './shellMvr'
 
 /**
@@ -85,6 +86,8 @@ export const stValentinImmersif: EmailTemplate = {
       {
         preheader: `Une Saint-Valentin immersive · ${v.date}, ${v.hours}`,
         accent: 'mauve',
+        logoUrl: LOGO_MVR,
+        logoBg: '#2E2F29',
       },
     ),
 }

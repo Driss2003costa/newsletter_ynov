@@ -13,6 +13,7 @@ import {
   rule,
   spacer,
   signature,
+  LOGO_MVR,
 } from './shellMvr'
 
 /**
@@ -86,6 +87,8 @@ export const stValentin: EmailTemplate = {
       {
         preheader: `${v.date} · ${v.hours} · Musée de la Vie Romantique`,
         accent: 'mauve',
+        logoUrl: LOGO_MVR,
+        logoBg: '#2E2F29',
       },
     ),
 }
