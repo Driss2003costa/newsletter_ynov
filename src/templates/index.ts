@@ -2,9 +2,19 @@ import type { EmailTemplate } from '../types'
 import { vernissage } from './vernissage'
 import { bienvenue } from './bienvenue'
 import { programme } from './programme'
+import { stValentin } from './stValentin'
+import { stValentinImmersif } from './stValentinImmersif'
+import { immersion } from './immersion'
 
 /** Registre des templates disponibles dans le studio. */
-export const templates: EmailTemplate[] = [vernissage, bienvenue, programme]
+export const templates: EmailTemplate[] = [
+  stValentin,
+  stValentinImmersif,
+  immersion,
+  vernissage,
+  bienvenue,
+  programme,
+]
 
 export function getTemplate(id: string | undefined): EmailTemplate | undefined {
   return templates.find((t) => t.id === id)

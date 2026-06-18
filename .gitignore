@@ -9,3 +9,6 @@ dist-ssr
 .vercel
 .env
 .env*.local
+
+# Aperçus HTML générés (npx vite-node scripts/renderPreviews.ts)
+previews/
