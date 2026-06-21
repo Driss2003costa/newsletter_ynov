@@ -88,7 +88,7 @@ export const stValentin: EmailTemplate = {
         preheader: `${v.date} · ${v.hours} · Musée de la Vie Romantique`,
         accent: 'mauve',
         logoUrl: LOGO_MVR,
-        logoBg: '#2E2F29',
+        logoBg: '#7D8E8A',
       },
     ),
 }

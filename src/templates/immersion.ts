@@ -84,7 +84,7 @@ export const immersion: EmailTemplate = {
         brand: 'Musée de la Vie Romantique',
         accent: 'sage',
         logoUrl: LOGO_MVR,
-        logoBg: '#2E2F29',
+        logoBg: '#7D8E8A',
       },
     ),
 }

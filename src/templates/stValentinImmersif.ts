@@ -87,7 +87,7 @@ export const stValentinImmersif: EmailTemplate = {
         preheader: `Une Saint-Valentin immersive · ${v.date}, ${v.hours}`,
         accent: 'mauve',
         logoUrl: LOGO_MVR,
-        logoBg: '#2E2F29',
+        logoBg: '#7D8E8A',
       },
     ),
 }
