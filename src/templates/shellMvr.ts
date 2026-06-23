@@ -23,6 +23,7 @@ const C = {
   sageBg: '#EEF2EA', // fond sauge très clair
   mauve: '#856E90', // mauve (accent romantique, lisible)
   mauveBg: '#F1ECF3', // fond mauve très clair
+  heather: '#b09ba6', // mauve poudré (boutons, libellés cartel, filets)
 }
 
 const SERIF = "Georgia, 'Times New Roman', Times, serif"
@@ -125,7 +126,7 @@ export function featureLines(text: string): string {
 /** Bouton plein, sauge profond (CTA principal), centré. */
 export function button(label: string, url: string): string {
   if (!label || !url) return ''
-  return `<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:10px auto;"><tr><td style="background:${C.sageDeep};">
+  return `<table role="presentation" cellpadding="0" cellspacing="0" align="center" style="margin:10px auto;"><tr><td style="background:${C.heather};">
     <a href="${esc(url)}" target="_blank" style="display:inline-block;padding:15px 34px;font-family:${SANS};font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#FBFAF6;text-decoration:none;">${esc(label)}</a>
   </td></tr></table>`
 }
@@ -137,13 +138,13 @@ export function cartel(items: { label: string; value: string }[]): string {
   const rows = list
     .map((i, idx) => {
       const last = idx === list.length - 1
-      return `<tr><td align="center" style="padding:14px 8px;${last ? '' : `border-bottom:1px solid ${C.line};`}">
-        <div style="font-family:${SANS};font-size:10px;letter-spacing:3px;text-transform:uppercase;color:${C.sage};">${esc(i.label)}</div>
+      return `<tr><td align="center" style="padding:14px 8px;${last ? '' : `border-bottom:1px solid ${C.heather};`}">
+        <div style="font-family:${SANS};font-size:10px;letter-spacing:3px;text-transform:uppercase;color:${C.heather};">${esc(i.label)}</div>
         <div style="margin-top:5px;font-family:${SERIF};font-size:17px;color:${C.ink};">${esc(i.value)}</div>
       </td></tr>`
     })
     .join('')
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:6px 0;border-top:1px solid ${C.line};border-bottom:1px solid ${C.line};">${rows}</table>`
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:6px 0;border-top:1px solid ${C.heather};border-bottom:1px solid ${C.heather};">${rows}</table>`
 }
 
 /** Encart code promo (fond sauge clair, bordure pointillée, code en grand). */
