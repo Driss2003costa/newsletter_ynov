@@ -1,0 +1,31 @@
+// Schéma Prisma — collection de Blu-ray
+// Docs : https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// Un film de la collection (Blu-ray, 4K UHD, Steelbook, etc.)
+model BluRay {
+  id            Int      @id @default(autoincrement())
+  tmdbId        Int?     @unique // identifiant TMDB (null si saisie manuelle)
+  title         String
+  originalTitle String?
+  year          Int?
+  posterPath    String? // chemin TMDB, ex: /abc123.jpg
+  backdropPath  String?
+  overview      String?
+  rating        Float? // note TMDB /10
+  runtime       Int? // durée en minutes
+  genres        String? // genres séparés par des virgules
+  director      String?
+  format        String   @default("Blu-ray") // Blu-ray, 4K UHD Blu-ray, Steelbook, DVD...
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
