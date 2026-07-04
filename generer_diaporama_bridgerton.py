@@ -52,6 +52,10 @@ F_FUCHSIA     = RGBColor(0xD9, 0x4F, 0x8A)
 TITLE_FONT = "Didot"     # serif Didone a fort contraste
 BODY_FONT  = "Garamond"  # corps
 
+# Chemin optionnel d'un logo / monogramme de couverture. Vide par defaut : le
+# repli natif (cachet de cire dore) est alors dessine, sans image plaquee.
+LOGO_PATH = ""
+
 # Geometrie, calculee depuis slide_width / slide_height.
 SW = prs.slide_width          # EMU
 SH = prs.slide_height
@@ -352,15 +356,24 @@ def _fill_cell(cell, text, size, color, bold, align, fill_color):
     _apply_run(p.add_run(), R(text, size, color, bold, False, BODY_FONT))
 
 
-def safe_add_picture(slide, path, left, top, width, height, label="Image"):
-    """Gestion propre des images : ajoute la photo si le chemin existe, sinon
-    dessine un placeholder encadre. Un chemin vide vaut absence d'image (aucun
-    dessin). Aucun crash silencieux."""
+def _monogram_fallback(slide, left, top, width, height):
+    """Repli natif du monogramme de couverture : cachet de cire dore 'VR'."""
+    d = min(width, height)
+    return add_wax_seal(slide, left + (width - d) // 2, top, d,
+                        color=OR_RICHE, monogram="VR", text_color=ENCRE)
+
+
+def safe_add_picture(slide, path, left, top, width, height, label="Image",
+                     fallback=None):
+    """Ajoute la photo si le chemin existe. Sinon, si un repli natif est fourni
+    (fallback), il est dessine ; a defaut un placeholder encadre remplace
+    l'image. Aucun crash silencieux, jamais d'image plaquee en diapo entiere."""
     import os
-    if not path:
-        return None
-    if os.path.exists(path):
+    if path and os.path.exists(path):
         return slide.shapes.add_picture(path, left, top, width, height)
+    if fallback is not None:
+        print("  [image] repli natif utilise (chemin :", (path or "aucun") + ")")
+        return fallback(slide, left, top, width, height)
     ph = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
     ph.fill.background()
     ph.line.color.rgb = OR_RICHE
@@ -422,9 +435,11 @@ def slide_couverture(titre, sous_titre, date, auteur="", ouverture=""):
                            'align': PP_ALIGN.CENTER}])
         _track_caps(tb, spc_pt=2.0)
 
-    # monogramme (via safe_add_picture, placeholder si absent) et cachet de cire
-    add_wax_seal(s, (SW - Inches(0.7)) // 2, int(SH * 0.83), Inches(0.7),
-                 color=OR_RICHE, monogram="VR", text_color=ENCRE)
+    # monogramme de couverture : logo si LOGO_PATH pointe une image existante,
+    # sinon repli natif (cachet de cire dore), le tout via safe_add_picture.
+    d = Inches(0.7)
+    safe_add_picture(s, LOGO_PATH, (SW - d) // 2, int(SH * 0.83), d, d,
+                     label="Monogramme", fallback=_monogram_fallback)
     return s
 
 
