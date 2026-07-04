@@ -166,13 +166,19 @@ def set_pic_alpha(pic, pct):
     blip.append(blip.makeelement(qn('a:alphaModFix'), {'amt': str(int(pct * 1000))}))
 
 def pic(slide, name, x, y, w=None, h=None, opacity=None, flip=False, rot=None):
-    nw, nh = NATIVE[name]
+    """Place un ornement PNG. Gestion universelle des images manquantes : si le
+    fichier n'existe pas, un discret cadre de substitution remplace l'image et
+    aucune exception n'est levee (jamais de crash silencieux ni bloquant)."""
+    nw, nh = NATIVE.get(name, (100, 100))
     if w is None and h is not None:
         w = h * nw / nh
     if h is None and w is not None:
         h = w * nh / nw
-    p = slide.shapes.add_picture(os.path.join(ORN, name + ".png"),
-                                 PXX(x), PXY(y), PXX(w), PXY(h))
+    path = os.path.join(ORN, name + ".png")
+    if not os.path.exists(path):
+        print("  [ornement absent] cadre de substitution :", path)
+        return rect(slide, x, y, w or 60, h or 60, fill=None, line=OR_RICHE, line_pt=0.75)
+    p = slide.shapes.add_picture(path, PXX(x), PXY(y), PXX(w), PXY(h))
     if opacity is not None:
         set_pic_alpha(p, opacity)
     if flip:
@@ -182,17 +188,8 @@ def pic(slide, name, x, y, w=None, h=None, opacity=None, flip=False, rot=None):
     _no_shadow(p)
     return p
 
-def safe_pic(slide, name, x, y, w=None, h=None, **kw):
-    """add_picture si l'ornement existe, sinon place un discret marqueur (aucun crash)."""
-    path = os.path.join(ORN, name + ".png")
-    if os.path.exists(path):
-        return pic(slide, name, x, y, w, h, **kw)
-    nw, nh = NATIVE.get(name, (100, 100))
-    if w is None and h is not None: w = h * nw / nh
-    if h is None and w is not None: h = w * nh / nw
-    ph = rect(slide, x, y, w or 60, h or 60, fill=None, line=OR_RICHE, line_pt=0.75)
-    print("  [ornement absent] marqueur :", path)
-    return ph
+# Toute pose d'image passe par la meme garde anti-crash.
+safe_pic = pic
 
 def _new_slide():
     global _page
