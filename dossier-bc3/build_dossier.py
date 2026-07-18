@@ -728,8 +728,16 @@ para("J'ai aussi beaucoup progressé en communication, en apprenant à échanger
      "créatrice et avec des partenaires extérieurs, chacun ayant ses attentes. Enfin, j'ai développé une "
      "vraie rigueur et un sens de l'organisation, indispensables pour gérer plusieurs sujets en parallèle et "
      "tenir un rythme de reporting régulier.")
-placeholder("personnalisez ce paragraphe avec un exemple précis qui montre votre évolution, par exemple une "
-            "décision que vous n'auriez pas osé prendre au début et que vous avez prise ensuite seule")
+para("Trois exemples concrets résument bien cette évolution. Au début, lorsqu'il fallait répondre à des "
+     "commentaires négatifs sur les réseaux, je demandais systématiquement de l'aide, car l'exercice n'était "
+     "pas simple et je craignais de mal formuler ma réponse. Avec le temps, j'ai appris à gérer ces messages "
+     "seule, en gardant le bon ton et en protégeant l'image de la marque. Le reporting a été un autre cap. "
+     "Prendre la parole pour présenter mes résultats m'intimidait et je l'appréhendais chaque semaine, mais à "
+     "force de le pratiquer lors de nos points hebdomadaires, j'ai gagné en aisance, au point d'être "
+     "aujourd'hui à l'aise pour exposer et défendre mon travail. Enfin, j'ai appris à décider seule quand la "
+     "situation l'exigeait et à être force de proposition, notamment en suggérant des idées de posts et de "
+     "contenus plutôt que d'attendre qu'on me les dicte. Ce sont ces petits pas, répétés semaine après "
+     "semaine, qui m'ont fait passer d'une posture d'exécutante à une posture de cheffe de projet.")
 
 h2('8.3 Les compétences de cheffe de projet développées')
 para("Au fil de l'année, j'ai développé un ensemble de compétences qui correspondent à celles d'une cheffe "
