@@ -80,7 +80,7 @@ def one(mgr, r):
 two(mMarie, ("Ruben Sagot", "Alternant commercial"),
             ("Lucas Mouren", "Alternant gestion entreprise"))
 two(mSarah, ("Camille Noël", "Peintre"),
-            ("Jennifer Lienert", "Responsable commande (plâtre)"))
+            ("Jennifer Lienert", "Peintre et commande"))
 one(mCam, ("Estelle Casterot", "Alternante cheffe de projet e-commerce"))
 
 # ---------- viewBox serré
