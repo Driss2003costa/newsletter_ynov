@@ -4,6 +4,7 @@ import html
 
 WHITE = "#FFFFFF"
 BLACK = "#111111"
+GREEN = "#2E7D32"   # carte d'Estelle, pour se repérer
 SANS  = "Arial, 'Helvetica Neue', Helvetica, 'Liberation Sans', sans-serif"
 
 elems, xs, ys = [], [], []
@@ -20,12 +21,12 @@ def wrap(text, maxc):
     if cur: lines.append(cur)
     return lines[:2]
 
-def box(cx, top, w, name, role, dark=False):
+def box(cx, top, w, name, role, dark=False, bg=None):
     h = 84
     left = cx - w/2
     track(left, top); track(left + w, top + h)
-    fill = BLACK if dark else WHITE
-    tcol = WHITE if dark else BLACK
+    fill = bg if bg else (BLACK if dark else WHITE)
+    tcol = WHITE if (dark or bg) else BLACK
     elems.append(f'<rect x="{left:.1f}" y="{top:.1f}" width="{w}" height="{h}" rx="2" '
                  f'fill="{fill}" stroke="{BLACK}" stroke-width="1.4"/>')
     elems.append(f'<text x="{cx:.1f}" y="{top+32:.1f}" text-anchor="middle" '
@@ -66,6 +67,10 @@ line(810, 198, 810, 228)
 line(dig, 228, ate, 228)
 for c in (dig, com, ate): line(c, 228, c, Ftop)
 
+def tbox(cx, top, member):
+    name, role = member
+    box(cx, top, TW, name, role, bg=(GREEN if name == "Estelle Casterot" else None))
+
 def pole(cx, label, resp, team):
     frame(cx, Ftop, FW, FH, label)
     r = box(cx, Ftop + 44, RW, resp[0], resp[1])
@@ -75,10 +80,10 @@ def pole(cx, label, resp, team):
         line(cx, bot, cx, bot + 28)
         line(c1, bot + 28, c2, bot + 28)
         line(c1, bot + 28, c1, bot + 40); line(c2, bot + 28, c2, bot + 40)
-        box(c1, bot + 40, TW, *team[0]); box(c2, bot + 40, TW, *team[1])
+        tbox(c1, bot + 40, team[0]); tbox(c2, bot + 40, team[1])
     else:
         line(cx, bot, cx, bot + 40)
-        box(cx, bot + 40, TW, *team[0])
+        tbox(cx, bot + 40, team[0])
 
 pole(dig, "PÔLE DIGITAL",
      ("Camille Abela", "Responsable e-commerce"),
