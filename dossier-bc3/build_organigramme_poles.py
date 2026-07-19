@@ -54,17 +54,17 @@ def frame(cx, top, w, h, label):
 # ---------- géométrie
 DW, RW, TW = 248, 230, 196
 dig, com, ate = 330, 810, 1290
-Ftop, FW, FH = 214, 450, 270
+Ftop, FW, FH = 258, 450, 270
 
-# direction
-box(675, 60, DW, "Alexandra Cefai", "Créatrice de la marque", dark=True)
-box(945, 60, DW, "Damien Grauvogel", "Designer produit et co-créateur", dark=True)
-line(675, 144, 675, 166); line(945, 144, 945, 166); line(675, 166, 945, 166)
-line(810, 166, 810, 190)
+# pôle direction (encadré comme les autres)
+frame(810, 40, 640, 158, "PÔLE DIRECTION")
+box(675, 84, DW, "Alexandra Cefai", "Créatrice de la marque", dark=True)
+box(945, 84, DW, "Damien Grauvogel", "Designer produit et co-créateur", dark=True)
 
-# bus vers les pôles
-line(dig, 190, ate, 190)
-for c in (dig, com, ate): line(c, 190, c, Ftop)
+# bus vers les pôles (depuis le bas du cadre direction)
+line(810, 198, 810, 228)
+line(dig, 228, ate, 228)
+for c in (dig, com, ate): line(c, 228, c, Ftop)
 
 def pole(cx, label, resp, team):
     frame(cx, Ftop, FW, FH, label)
