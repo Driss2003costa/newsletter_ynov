@@ -279,6 +279,26 @@ para("Chaque pôle regroupe des métiers complémentaires. La direction assure l
      "commandes. Le pôle digital, enfin, porte l'image de la marque et les ventes en ligne, à travers le "
      "site e-commerce, les réseaux sociaux et l'emailing. C'est dans ce dernier pôle que s'inscrivait mon "
      "poste.")
+
+h2("c. L'environnement technique")
+para("Sur le plan technique, J'ai vu la Vierge s'appuie sur un écosystème d'outils numériques qui "
+     "structurent son activité en ligne et sur lesquels reposait une grande partie de mon travail.")
+bullet(("Shopify : ", 'b'), "le site e-commerce, les fiches produits et les données de vente.")
+bullet(("Odoo : ", 'b'), "la gestion des commandes et de la relation avec les revendeurs professionnels.")
+bullet(("Kiliba : ", 'b'), "l'emailing automatisé, piloté par l'intelligence artificielle et intégré à "
+        "Shopify.")
+bullet(("Un studio d'emailing sur mesure : ", 'b'), "pour les communications premium respectant "
+        "parfaitement l'identité visuelle de la marque.")
+bullet(("Trello : ", 'b'), "la planification et le suivi des tâches.")
+bullet(("Les outils des plateformes sociales : ", 'b'), "Meta Business Suite pour Instagram et Facebook et "
+        "les outils natifs de TikTok, pour la programmation et le suivi des publications.")
+placeholder("ajoutez vos outils de création et de montage vidéo, par exemple Canva, CapCut ou la suite Adobe")
+para("Cet environnement technique s'accompagne de relations suivies avec plusieurs acteurs externes. La "
+     "marque collabore avec ses prestataires, s'adresse à ses clients particuliers par le site et les réseaux "
+     "sociaux, et anime un large réseau de revendeurs et de partenaires physiques, dont je relayais les "
+     "opérations sur les canaux digitaux.")
+placeholder("précisez si vous le souhaitez vos prestataires clés, par exemple la logistique, le transporteur "
+            "ou d'éventuels prestataires techniques")
 pb()
 
 # ================= 2. LES MISSIONS ET PROJETS
