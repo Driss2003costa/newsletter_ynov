@@ -290,7 +290,10 @@ bullet(("Un studio d'emailing sur mesure : ", 'b'), "pour les envois premium qui
 bullet(("Trello : ", 'b'), "la planification et le suivi de mes tâches.")
 bullet(("Les outils des réseaux : ", 'b'), "Meta Business Suite pour Instagram et Facebook, et les outils "
         "de TikTok, pour programmer et suivre les publications.")
-placeholder("ajoutez vos outils de création et de montage vidéo, par exemple Canva, CapCut ou la suite Adobe")
+para("Je travaillais aussi avec plusieurs outils de création selon les besoins : Canva pour les visuels et "
+     "les mises en page, CapCut pour le montage de mes stories et de mes Reels vidéo, et surtout Photoshop et "
+     "Illustrator, sur lesquels je retouchais mes photographies pour qu'elles collent parfaitement à l'univers "
+     "de la marque.")
 para("À côté de ces outils, la marque entretient des relations régulières avec plusieurs acteurs : ses "
      "prestataires, ses clients particuliers qu'elle touche par le site et les réseaux, et son grand réseau "
      "de revendeurs et de partenaires physiques, dont je relayais les opérations en ligne.")
@@ -392,7 +395,8 @@ para("Le projet s'appuyait sur tout un ensemble d'outils : Shopify pour le site,
      "ventes, Odoo pour les revendeurs, Kiliba pour l'emailing automatisé, un studio d'emailing sur mesure "
      "pour les envois premium, Trello pour l'organisation, et les outils d'Instagram, de TikTok et de "
      "Facebook pour programmer et suivre les publications.")
-placeholder("ajoutez vos outils de création et de montage vidéo, par exemple Canva, CapCut ou la suite Adobe")
+para("À cela s'ajoutaient mes outils de création : Canva pour les visuels, CapCut pour le montage de mes "
+     "stories et de mes Reels, et Photoshop et Illustrator pour retoucher mes photographies.")
 h3('vii. Les différents formats')
 para("J'ai utilisé une palette de formats assez large pour capter l'attention à chaque étape : des posts "
      "pour poser l'univers, des carrousels pour raconter, des stories pour l'instantané et l'interaction, et "
